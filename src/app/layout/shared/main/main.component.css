@@ -2,3 +2,7 @@ p {
     margin: auto;
     text-align: center;
 }
+
+.main-col {
+    background-color: aqua;
+}
