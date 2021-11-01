@@ -1,1 +1,120 @@
-<p>create-data works!</p>
+<h1 class="heading">Item management</h1>
+<p-panel class="mb-3" header="Create new item" [toggleable]="true">
+  <div class="w-full">
+    <div class="grid fluid">
+      <div class="col-md-12 p-md-4 p-2 flex-grow-1">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-pencil"></i></span>
+          <input
+            id="username1"
+            class="p-inputtext p-component p-element"
+            type="text"
+            pInputText
+            placeholder="Item name"
+          />
+        </div>
+      </div>
+      <div class="col-md-12 p-md-4 p-2 flex-grow-1">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">$</span>
+          <input
+            id="price1"
+            class="p-inputtext p-component p-element"
+            type="text"
+            pInputText
+            placeholder="Price"
+          />
+          <span class="p-inputgroup-addon">.00</span>
+        </div>
+      </div>
+      <div class="col-md-12 p-md-4 p-2 flex-grow-1">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">H</span>
+          <p-inputNumber
+            inputId="minmax"
+            mode="decimal"
+            [min]="0"
+            [max]="100"
+            [showButtons]="true"
+            placeholder="Height"
+          >
+          </p-inputNumber>
+        </div>
+      </div>
+      <div class="col-md-12 p-md-4 p-2 flex-grow-1">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">W</span>
+          <p-inputNumber
+            inputId="minmax2"
+            mode="decimal"
+            [min]="0"
+            [max]="100"
+            [showButtons]="true"
+            placeholder="Width"
+          >
+          </p-inputNumber>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-panel>
+
+<p-panel header="Items" [toggleable]="true">
+  <p-table
+    [value]="lastItems"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    responsiveLayout="stack"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 200px" pSortableColumn="id">
+          Item #<p-sortIcon field="id"></p-sortIcon>
+        </th>
+        <th style="min-width: 200px" pSortableColumn="status">
+          Status<p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th style="min-width: 200px" pSortableColumn="desc">
+          Description<p-sortIcon field="desc"></p-sortIcon>
+        </th>
+        <th style="min-width: 200px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td style="min-width: 200px">{{ item.id }}</td>
+        <td style="min-width: 200px">
+          <span
+            class="pi mr-2"
+            [ngClass]="utilsService.validateStatus(item.status)"
+          ></span
+          >{{ item.status | titlecase }}
+        </td>
+        <td style="min-width: 200px">{{ item.desc }}</td>
+        <td style="min-width: 200px">
+          <button
+            pButton
+            (click)="openEditDialog(item.id)"
+            [pTooltip]="'Edit'"
+            [tooltipPosition]="'left'"
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button mr-2"
+          ></button>
+          <button
+            pButton
+            (click)="openDeleteConfirmation(item.id)"
+            [pTooltip]="'Delete'"
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast></p-toast>

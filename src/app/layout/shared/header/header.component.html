@@ -1,11 +1,11 @@
-<p-avatar class="ml-auto mr-5 pt-3" pBadge value="3" label="J" styleClass="p-mr-4" shape="square"></p-avatar>
+<span class="text-left font-semibold header-title ml-3">Generic</span>
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+<p-avatar class="ml-auto mr-5 pt-3 cursor-pointer" pBadge value="3" label="J" styleClass="p-mr-4" shape="square" (click)="menu.toggle($event)"></p-avatar>
 <button
   type="button"
   (click)="goToLogin()"
   pButton
   pRipple
   icon="pi pi-sign-out"
-  class="mt-2 mb-2 mr-2"
-  pTooltip="Logout"
-  tooltipPosition="bottom">
+  class="mt-2 mb-2 mr-2">
 </button>

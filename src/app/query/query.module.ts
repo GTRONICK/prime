@@ -1,3 +1,4 @@
+import { SharedModule } from './../layout/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,8 @@ import { QueryDataComponent } from './query-data/query-data.component';
   ],
   imports: [
     CommonModule,
-    QueryRoutingModule
+    QueryRoutingModule,
+    SharedModule
   ]
 })
 export class QueryModule { }

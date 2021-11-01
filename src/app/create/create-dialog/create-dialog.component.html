@@ -1,0 +1,20 @@
+<form [formGroup]="gobFom" class="p-fluid grid mt-4">
+    <div class="p-field col-4 md-1">
+        <span class="p-float-label">
+            <p-calendar id="itemExpirationDate" formControlName="expirationDate" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+            <label for="itemExpirationDate">Item expiration date</label>
+        </span>
+    </div>
+    <div class="p-field col-4 md-1">
+        <span class="p-float-label">
+            <p-dropdown id="itemStatusSelect" selected="" [options]="gobStates" formControlName="status" optionLabel="statusDesc" optionValue="statusCode"></p-dropdown>
+            <label for="itemStatusSelect">Item status</label>
+        </span>
+    </div>
+    <div class="p-field col-4 md-1">
+        <span class="p-float-label">
+            <input type="text" pInputText id="itemDescInput" class="p-inputtext p-component p-element"> 
+            <label for="itemDescInput">Description</label>
+        </span>
+    </div>
+</form>
