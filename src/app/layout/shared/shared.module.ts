@@ -1,4 +1,4 @@
-import { CreateDialogComponent } from './../../create/create-dialog/create-dialog.component';
+import { CreateDialogComponent } from '../../modules/create/create-dialog/create-dialog.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

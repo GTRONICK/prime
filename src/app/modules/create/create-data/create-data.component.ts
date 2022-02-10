@@ -1,5 +1,5 @@
-import { CreateDialogComponent } from './../create-dialog/create-dialog.component';
-import { UtilsService } from './../../services/utils.service';
+import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
+import { UtilsService } from '../../../services/utils.service';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Message } from 'primeng/api';

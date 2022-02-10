@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', component: CreateDataComponent}
+  {
+    path: '',
+    component: CreateDataComponent,
+    data: {animation: 'Create'}
+  }
 ];
 
 @NgModule({

@@ -5,23 +5,6 @@ html, body {
     font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-app-layout {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-app-create-data, app-query-data, app-home {
-    width: 100%;
-}
-
-app-create-data {
-    display: flex;
-    flex-direction: column;
-}
-
 .gradient {
 	background: linear-gradient(45deg, #772d76, #3390a6);
 }

@@ -1,4 +1,4 @@
-import { UtilsService } from './../../services/utils.service';
+import { UtilsService } from '../../../services/utils.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 

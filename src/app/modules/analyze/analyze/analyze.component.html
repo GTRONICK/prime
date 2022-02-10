@@ -1,0 +1,84 @@
+<div>
+  <div [formGroup]="gobForm" class="mb-5">
+      <div class="flex justify-content-between">
+        <div class="p-inputgroup mr-5">
+        <span class="p-inputgroup-addon"><i class="pi pi-compass"></i></span>
+        <input
+            type="text"
+            pInputText
+            placeholder="Item name"
+            formControlName="searchTerm"
+            #searchInput
+        />
+        <button
+            type="button"
+            pButton
+            pRipple
+            (click)="getItemPrice(searchInput.value)"
+            [disabled]="searchInput.value.length === 0"
+        >
+            <i class="pi pi-search"></i>
+        </button>
+        </div>
+        <p-dropdown
+        class="mr-1"
+        [options]="enchantments"
+        formControlName="enchantments"
+        optionLabel="name"
+        optionValue="value"
+        placeholder="Enchantments"
+        ></p-dropdown>
+        <p-dropdown
+        [options]="qualities"
+        formControlName="quality"
+        optionLabel="name"
+        optionValue="value"
+        placeholder="Quality"
+        ></p-dropdown>
+    </div>
+  </div>
+  <p-table
+    [value]="marketPrices"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    responsiveLayout="stack"
+    class="w-100"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="item_id">
+          ID<p-sortIcon field="item_id"></p-sortIcon>
+        </th>
+        <th pSortableColumn="city">
+          City<p-sortIcon field="city"></p-sortIcon>
+        </th>
+        <th pSortableColumn="qualityName">
+          Quality<p-sortIcon field="qualityName"></p-sortIcon>
+        </th>
+        <th class="text-right" pSortableColumn="sell_price_min">
+          Min. Sell price<p-sortIcon field="sell_price_min"></p-sortIcon>
+        </th>
+        <th class="text-right" pSortableColumn="sell_price_max">
+          Max. Sell price<p-sortIcon field="sell_price_max"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td>{{ normalizeName(item.item_id) }}</td>
+        <td>{{ item.city }}</td>
+        <td>{{ item.qualityName }}</td>
+        <td class="text-right">
+          {{ item.sell_price_min | currency: "USD":"symbol":"1.0-0" }}
+        </td>
+        <td class="text-right">
+          {{ item.sell_price_max | currency: "USD":"symbol":"1.0-0" }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- enchantments -->
